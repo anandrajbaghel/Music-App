@@ -6,3 +6,4 @@ An app for music.
 #### More features and improvement soon...
 
 ![Music App](r/music-app-img1.jpg)
+![Music App](r/music-app-img2.jpg)
