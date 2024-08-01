@@ -5,197 +5,323 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Player</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
     <link rel="icon" href="r/spreadMusic.svg" type="image/svg+xml">
 </head>
 <body>
         <div class="circle"></div>
-        <div class="universalNav">
-            <div class="search">
-                <div class="searchLoading">
-                    <div class="loadingAnimation">
-                        <div id="lottie-animation"></div>
+
+        <!-- Queue -->
+        <div class="queue" id="left-side-queue">
+            <div class="queueElements element1">
+                <div class="queueTitle">Queue</div>
+                <div class="queueList">
+                    <div class="queueCard playingSongQueue">
+                        <div class="queueCardImage">
+                            <img src="r/image1.jpg" alt="" srcset="">
+                        </div>
+                        <div class="queueCardDetails">
+                            <span class="queueCardName">name</span>
+                            <span class="queueCardArtist">artist</span>
+                        </div>
                     </div>
-                    <input type="text" class="searchInput" id="search-bar" placeholder="search your favourite song, artist or playlist">
+                    <div class="queueCard">
+                        <div class="queueCardImage">
+                            <img src="r/image2.jpg" alt="" srcset="">
+                        </div>
+                        <div class="queueCardDetails">
+                            <span class="queueCardName">name</span>
+                            <span class="queueCardArtist">artist</span>
+                        </div>
+                    </div>
+                    <div class="queueCard">
+                        <div class="queueCardImage">
+                            <img src="r/image3.jpg" alt="" srcset="">
+                        </div>
+                        <div class="queueCardDetails">
+                            <span class="queueCardName">name</span>
+                            <span class="queueCardArtist">artist</span>
+                        </div>
+                    </div>
+                    <div class="queueCard">
+                        <div class="queueCardImage">
+                            <img src="r/image4.jpg" alt="" srcset="">
+                        </div>
+                        <div class="queueCardDetails">
+                            <span class="queueCardName">name</span>
+                            <span class="queueCardArtist">artist</span>
+                        </div>
+                    </div>
+                    <div class="queueCard">
+                        <div class="queueCardImage">
+                            <img src="r/image5.jpg" alt="" srcset="">
+                        </div>
+                        <div class="queueCardDetails">
+                            <span class="queueCardName">name</span>
+                            <span class="queueCardArtist">artist</span>
+                        </div>
+                    </div>
                 </div>
-                <img src="r/search.svg" alt="" srcset="" class="searchButton">
             </div>
-            <div class="profile"></div>
-            <div class="serchResults" id="search-results">
-                <!-- <div class="searchTitle">Top Search</div> -->
-                <div class="searchList" id="search-list">
-                    Top Songs
-                    <div class="searchList1" id="search-list-songs">
-    
+            <div class="queueElements element2">
+                <div class="queueTitle">Favourites</div>
+                <div class="queueList">
+                    <div class="queueCard">
+                        <div class="queueNumber">1</div>
+                        <div class="queueCardImage">
+                            <img src="r/image2.jpg" alt="" srcset="">
+                        </div>
+                        <div class="queueCardDetails">
+                            <span class="queueCardName">name</span>
+                            <span class="queueCardArtist">artist</span>
+                        </div>
+                        <div class="favStatus">
+                            <img src="r/filled-heart.svg" alt="" srcset="">
+                        </div>
                     </div>
-                    Top Artists
-                    <div class="searchList2" id="search-list-artists">
-    
+                    <div class="queueCard">
+                        <div class="queueNumber">2</div>
+                        <div class="queueCardImage">
+                            <img src="r/image3.jpg" alt="" srcset="">
+                        </div>
+                        <div class="queueCardDetails">
+                            <span class="queueCardName">name</span>
+                            <span class="queueCardArtist">artist</span>
+                        </div>
+                        <div class="favStatus">
+                            <img src="r/filled-heart.svg" alt="" srcset="">
+                        </div>
                     </div>
-                    Shortcuts
-                    <div class="shortcuts">
-                        <ul>
-                            <li>Spacebar - Play/Pause</li>
-                            <li>Left Arrow - 10s Backward</li>
-                            <li>Right Arrow - 10s Forward</li>
-                            <li>Up Arrow - Volume Up</li>
-                            <li>Down Arrow - Volume Down</li>
-                            <li>F - Find</li>
-                            <li>M - Mute/Unmute</li>
-                            <li>N - Next Track</li>
-                            <li>P - Previous Track</li>
-                            <li>Q - Queue</li>
-                            <li>R - Repeat</li>
-                            <li>S - Fullscreen</li>
-                            <li>X - Shuffle</li>
-                            
-                        </ul>
+                </div>
+            </div>
+            <div class="queueElements element3">
+                <div class="queueTitle">Most Played</div>
+                <div class="queueList">
+                    <div class="queueCard">
+                        <div class="queueNumber">1</div>
+                        <div class="queueCardImage">
+                            <img src="r/image2.jpg" alt="" srcset="">
+                        </div>
+                        <div class="queueCardDetails">
+                            <span class="queueCardName">name</span>
+                            <span class="queueCardArtist">artist</span>
+                        </div>
+                    </div>
+                    <div class="queueCard">
+                        <div class="queueNumber">2</div>
+                        <div class="queueCardImage">
+                            <img src="r/image3.jpg" alt="" srcset="">
+                        </div>
+                        <div class="queueCardDetails">
+                            <span class="queueCardName">name</span>
+                            <span class="queueCardArtist">artist</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="main" id="main">
+            <!-- Nav and search bar -->
+            <div class="universalNav">
+                <div class="search">
+                    <div class="searchLoading">
+                        <div class="loadingAnimation">
+                            <div id="lottie-animation"></div>
+                        </div>
+                        <input type="text" class="searchInput" id="search-bar" placeholder="search your favourite song, artist or playlist">
+                    </div>
+                    <img src="r/search.svg" alt="" srcset="" class="searchButton">
+                </div>
+                <div class="profile"></div>
+                <div class="searchResults" id="search-results">
+                    <!-- <div class="searchTitle">Top Search</div> -->
+                    <div class="searchList" id="search-list">
+                        Top Songs
+                        <div class="searchList1" id="search-list-songs">
         
-
-        <!-- visibility set to hidden -->
-        <div class="profileMsg">
-            <span class="welcomeMsg">Good Morning</span>
-            <span class="creditsMsg">Hi! I am <span class="creditName">Anand</span>!</span>
-            <span class="profileGithub">Visit my
-                <a href="https://github.com/anandrajbaghel" target="_blank">Github Profile</a>.
-            </span>
-        </div>
-
-
-
-        <div class="playingQueue">
-            <div class="card card-0">
-                <div class="cardBack"></div>
-                <div class="cardQueue">
-                    <img src="r/spreadMusic.svg" alt="" srcset="" class="spreadIcon"/>
-                    <span class="cardDetails">
-                        <span class="mainName">name</span>
-                        <span class="artistName">artist</span>
-                    </span>
-                    <span class="line"></span>
-                    <span class="grad"></span>
-                    <img src="r/image3.jpg" alt="" class="cardImage"/>
-                </div>
-            </div>
-            <div class="card card-1">
-                <div class="cardBack"></div>
-                <div class="cardQueue">
-                    <img src="r/spreadMusic.svg" alt="" srcset="" class="spreadIcon"/>
-                    <span class="cardDetails">
-                        <span class="mainName">name</span>
-                        <span class="artistName">artist</span>
-                    </span>
-                    <span class="line"></span>
-                    <span class="grad"></span>
-                    <img src="r/image2.jpg" alt="" class="cardImage"/>
-                </div>
-            </div>
-            <div class="card card-2 Playing ">
-                <div class="cardBack"></div>
-                <div class="cardQueue">
-                    <img src="r/spreadMusic.svg" alt="" srcset="" class="spreadIcon"/>
-                    <span class="cardDetails">
-                        <span class="mainName">name</span>
-                        <span class="artistName">artist</span>
-                    </span>
-                    <span class="line"></span>
-                    <span class="grad"></span>
-                    <img src="r/image1.jpg" alt="" class="cardImage"/>
-                </div>
-            </div>
-            <div class="card card-3">
-                <div class="cardBack"></div>
-                <div class="cardQueue">
-                    <img src="r/spreadMusic.svg" alt="" srcset="" class="spreadIcon"/>
-                    <span class="cardDetails">
-                        <span class="mainName">name</span>
-                        <span class="artistName">artist</span>
-                    </span>
-                    <span class="line"></span>
-                    <span class="grad"></span>
-                    <img src="r/image5.jpg" alt="" class="cardImage"/>
-                </div>
-            </div>
-            <div class="card card-4">
-                <div class="cardBack"></div>
-                <div class="cardQueue">
-                    <img src="r/spreadMusic.svg" alt="" srcset="" class="spreadIcon"/>
-                    <span class="cardDetails">
-                        <span class="mainName">name</span>
-                        <span class="artistName">artist</span>
-                    </span>
-                    <span class="line"></span>
-                    <span class="grad"></span>
-                    <img src="r/image4.jpg" alt="" class="cardImage"/>
-                </div>
-            </div>
-        </div>
-
-        <div class="audioPlayer">
-            <audio id="audio-player" src=""></audio>
-            <div class="audioLeftController">
-                <div class="audioDevices">
-                    <img src="r/device.svg" alt="" srcset="">
-                </div>
-                <div class="audioLyrics">
-                    <img src="r/caption.svg" alt="" srcset="">
-                </div>
-            </div>
-
-            <div class="audioMiddleController">
-                <!-- Repeat track -->
-                <div class="audioRepeatState" id="repeat">
-                    <img src="r/repeat-all.svg" alt="" srcset="">
-                </div>
-                <!-- Play previous track -->
-                <div class="audioPrevious" id="previous">
-                    <img src="r/previousTrack.svg" alt="" srcset="">
-                </div>
-                <!-- Play and Pause -->
-                <div class="audioPlayPause">
-                    <div class="audioState" id="play-pause">
-                        <img src="r/play.svg" alt="" srcset="">
+                        </div>
+                        Top Artists
+                        <div class="searchList2" id="search-list-artists">
+        
+                        </div>
+                        Shortcuts
+                        <div class="shortcuts">
+                            <ul>
+                                <li>Spacebar - Play/Pause</li>
+                                <li>Left Arrow - 10s Backward</li>
+                                <li>Right Arrow - 10s Forward</li>
+                                <li>Up Arrow - Volume Up</li>
+                                <li>Down Arrow - Volume Down</li>
+                                <li>F - Find</li>
+                                <li>M - Mute/Unmute</li>
+                                <li>N - Next Track</li>
+                                <li>P - Previous Track</li>
+                                <li>Q - Queue</li>
+                                <li>R - Repeat</li>
+                                <li>S - Fullscreen</li>
+                                <li>X - Shuffle</li>
+                                
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <!-- Play next track -->
-                <div class="audioNext" id="next">
-                    <img src="r/nextTrack.svg" alt="" srcset="">
+            </div>
+
+            <!-- Profile : visibility set to hidden -->
+            <div class="profileMsg">
+                <span class="welcomeMsg">Good Morning</span>
+                <span class="creditsMsg">Hi! I am <span class="creditName">Anand</span>!</span>
+                <span class="profileGithub">Visit my
+                    <a href="https://github.com/anandrajbaghel" target="_blank">Github Profile</a>.
+                </span>
+            </div>
+
+
+            <div class="playingQueue">
+                <div class="card card-0">
+                    <div class="cardBack"></div>
+                    <div class="cardQueue">
+                        <img src="r/spreadMusic.svg" alt="" srcset="" class="spreadIcon"/>
+                        <span class="cardDetails">
+                            <span class="mainName">name</span>
+                            <span class="artistName">artist</span>
+                        </span>
+                        <span class="line"></span>
+                        <span class="grad"></span>
+                        <img src="r/image3.jpg" alt="" class="cardImage"/>
+                    </div>
                 </div>
-                <!-- Shuffle track -->
-                <div class="audioShuffleState" id="shuffle">
-                    <img src="r/shuffle.svg" alt="" srcset="">
+                <div class="card card-1">
+                    <div class="cardBack"></div>
+                    <div class="cardQueue">
+                        <img src="r/spreadMusic.svg" alt="" srcset="" class="spreadIcon"/>
+                        <span class="cardDetails">
+                            <span class="mainName">name</span>
+                            <span class="artistName">artist</span>
+                        </span>
+                        <span class="line"></span>
+                        <span class="grad"></span>
+                        <img src="r/image2.jpg" alt="" class="cardImage"/>
+                    </div>
+                </div>
+                <div class="card card-2 Playing ">
+                    <div class="cardBack"></div>
+                    <div class="cardQueue">
+                        <img src="r/spreadMusic.svg" alt="" srcset="" class="spreadIcon"/>
+                        <span class="cardDetails">
+                            <span class="mainName">name</span>
+                            <span class="artistName">artist</span>
+                        </span>
+                        <span class="line"></span>
+                        <span class="grad"></span>
+                        <img src="r/image1.jpg" alt="" class="cardImage"/>
+                    </div>
+                </div>
+                <div class="card card-3">
+                    <div class="cardBack"></div>
+                    <div class="cardQueue">
+                        <img src="r/spreadMusic.svg" alt="" srcset="" class="spreadIcon"/>
+                        <span class="cardDetails">
+                            <span class="mainName">name</span>
+                            <span class="artistName">artist</span>
+                        </span>
+                        <span class="line"></span>
+                        <span class="grad"></span>
+                        <img src="r/image5.jpg" alt="" class="cardImage"/>
+                    </div>
+                </div>
+                <div class="card card-4">
+                    <div class="cardBack"></div>
+                    <div class="cardQueue">
+                        <img src="r/spreadMusic.svg" alt="" srcset="" class="spreadIcon"/>
+                        <span class="cardDetails">
+                            <span class="mainName">name</span>
+                            <span class="artistName">artist</span>
+                        </span>
+                        <span class="line"></span>
+                        <span class="grad"></span>
+                        <img src="r/image4.jpg" alt="" class="cardImage"/>
+                    </div>
                 </div>
             </div>
 
-            <div class="audioRightController">
-                <div class="audioQueue">
-                    <img src="r/queue.svg" alt="" srcset="">
+            <!-- volume controller -->
+            <div class="statusVolume">
+                <div class="volumeProgress">
+                    <div class="volumeTailHead">
+                        <span class="volumeHead"></span>
+                        <span class="volumeTail"></span>
+                    </div>
                 </div>
-                <!-- <div class="audioShare">
-                    <img src="r/share.svg" alt="" srcset="">
-                </div> -->
-                <div class="audioFullScreen" id="fullscreen">
-                    <img src="r/fullscreen.svg" alt="" srcset="">
+                <div class="vol">
+
+                </div>
+            </div>
+
+            <div class="audioPlayer">
+                <audio id="audio-player" src=""></audio>
+                <div class="audioLeftController">
+                    <!-- onclick="openNav()" -->
+                    <div class="audioQueue" id="queue-list">
+                        <img src="r/queue.svg" alt="" srcset="">
+                    </div>
+                    <div class="audioLike" id="like">
+                        <img src="r/empty-heart.svg" alt="" srcset="">
+                    </div>
+                </div>
+
+                <div class="audioMiddleController">
+                    <!-- Repeat track -->
+                    <div class="audioRepeatState" id="repeat">
+                        <img src="r/repeat-all.svg" alt="" srcset="">
+                    </div>
+                    <!-- Play previous track -->
+                    <div class="audioPrevious" id="previous">
+                        <img src="r/previousTrack.svg" alt="" srcset="">
+                    </div>
+                    <!-- Play and Pause -->
+                    <div class="audioPlayPause">
+                        <div class="audioState" id="play-pause">
+                            <img src="r/play.svg" alt="" srcset="">
+                        </div>
+                    </div>
+                    <!-- Play next track -->
+                    <div class="audioNext" id="next">
+                        <img src="r/nextTrack.svg" alt="" srcset="">
+                    </div>
+                    <!-- Shuffle track -->
+                    <div class="audioShuffleState" id="shuffle">
+                        <img src="r/shuffle.svg" alt="" srcset="">
+                    </div>
+                </div>
+
+                <div class="audioRightController">
+                    <div class="audioVolume" id="volume-icon">
+                        <img src="r/volume-above-50.svg" alt="" srcset="">
+                    </div>
+                    <!-- <div class="audioShare">
+                        <img src="r/share.svg" alt="" srcset="">
+                    </div> -->
+                    <div class="audioFullScreen" id="fullscreen">
+                        <img src="r/fullscreen.svg" alt="" srcset="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="status">
+                <div class="statusProgress">
+                    <div class="statusTailHead">
+                        <span class="statusTail"></span>
+                        <span class="statusHead"></span>
+                    </div>
+                </div>
+                <div class="statusCounter">
+                    <div class="counterCount">02:39</div>
+                    <div class="counterTotalCount">4:45</div>
                 </div>
             </div>
         </div>
-
-        <div class="status">
-            <div class="statusProgress">
-                <div class="statusTailHead">
-                    <span class="statusTail"></span>
-                    <span class="statusHead"></span>
-                </div>
-            </div>
-            <div class="statusCounter">
-                <div class="counterCount">02:39</div>
-                <div class="counterTotalCount">4:45</div>
-            </div>
-        </div>
-
 
 
 
@@ -208,7 +334,7 @@
                 renderer: 'svg',
                 loop: true,
                 autoplay: true,
-                path: 'r/loader.json' // Replace with the correct path to your animation JSON file
+                path: 'r/loader.json'
             });
         </script>
         <script src="script.js"></script>
