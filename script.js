@@ -1,6 +1,8 @@
 'use strict';
 
 document.addEventListener("DOMContentLoaded", function() {
+    const main = document.getElementById('main');
+
     const searchResults = document.getElementById('search-results');
     const searchListSongs = document.getElementById('search-list-songs');
     const searchListArtists = document.getElementById('search-list-artists');
@@ -12,13 +14,22 @@ document.addEventListener("DOMContentLoaded", function() {
     const nextButton = document.getElementById('next');
     const repeat = document.getElementById('repeat');
     const shuffle = document.getElementById('shuffle');
+    const volumeIcon = document.getElementById('volume-icon');
+    const like = document.getElementById('like');
     const fullscreenButton = document.getElementById('fullscreen'); // Added fullscreen button reference
-    
+    const queue = document.getElementById('left-side-queue'); // Added queue button reference
+    const queueList = document.getElementById('queue-list'); // Added queue list reference
+
     const statusHead = document.querySelector('.statusHead');
     const statusTail = document.querySelector('.statusTail');
     const counterCount = document.querySelector('.counterCount');
     const counterTotalCount = document.querySelector('.counterTotalCount');
     const statusProgress = document.querySelector('.statusProgress');
+
+    const statusVolume = document.querySelector('.statusVolume');
+    const volumeHead = document.querySelector('.volumeHead');
+    const volumeTail = document.querySelector('.volumeTail');
+    const volumeProgress = document.querySelector('.volumeProgress');
 
     // Specific card selectors for updating song details
     const card_0 = document.querySelector('.card-0');
@@ -42,6 +53,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const card_3_image = document.querySelector('.card-3 .cardImage');
     const card_4_image = document.querySelector('.card-4 .cardImage');
 
+    const playingSongQueue = document.querySelector('.playingSongQueue');
+
     card_0_song.textContent = 'High On Life';
     card_1_song.textContent = 'Ilahi';
     card_2_song.textContent = 'No Sleep';
@@ -58,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const songs = ['High On Life.mp3', 'Ilahi.mp3', 'No Sleep.mp3', 'On & On.mp3', 'Shanivaar Raati.mp3']; // Add your song filenames here
     const artistNames = ['Martin Garrix', 'Arijit Singh', 'Martin Garrix', 'Cartoon', 'Arijit Singh']; // Add artist names here
     const songImages = ['r/image1.jpg', 'r/image2.jpg', 'r/image3.jpg', 'r/image4.jpg', 'r/image5.jpg']; // Add image paths here
+    const likedSongs = []; // Array to store indices of liked songs
 
     let repeatMode = 'all'; // 'none', 'one', 'all'
 
@@ -119,11 +133,21 @@ document.addEventListener("DOMContentLoaded", function() {
         card_3_artist.textContent = artistNames[(currentSongIndex + 1) % songs.length];
         card_4_artist.textContent = artistNames[(currentSongIndex + 2) % songs.length];
 
+        updateLikeButton(); // Update like button based on the current song
+
         // Reset progress bar
         statusHead.style.left = '0px';
         statusTail.style.width = '0%';
         counterCount.textContent = '00:00'; // Reset to start time
         counterTotalCount.textContent = '00:00'; // Replace with actual total time
+    }
+
+    function updateLikeButton() {
+        if (likedSongs.includes(currentSongIndex)) {
+            like.innerHTML = '<img src="r/filled-heart.svg" alt="" srcset="">';
+        } else {
+            like.innerHTML = '<img src="r/empty-heart.svg" alt="" srcset="">';
+        }
     }
 
     playPauseButton.addEventListener('click', playPause);
@@ -178,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function() {
         statusTail.style.width = newProgress + '%';
     });
 
-    // Spacebar play/pause functionality
+    // Key shortcuts functionality
     document.addEventListener('keydown', function(e) {
         if (e.code === 'Space' && document.activeElement !== document.getElementById('search-bar')) {
             e.preventDefault(); // Prevent scrolling the page down
@@ -203,6 +227,37 @@ document.addEventListener("DOMContentLoaded", function() {
             // Toggle fullscreen mode
             e.preventDefault(); // Prevent the 's' key from being entered into the search bar
             toggleFullscreen();
+        } else if (e.code === 'KeyM') {
+            // Toggle mute/unmute
+            audioPlayer.volume = audioPlayer.volume === 0 ? 1 : 0;
+            updateVolumeUI();
+        } else if (e.code === 'ArrowUp') {
+            // Increase volume by 10units
+            audioPlayer.volume += 0.1;
+            updateVolumeUI();
+        } else if (e.code === 'ArrowDown') {
+            // Decrease volume by 10units
+            audioPlayer.volume -= 0.1;
+            updateVolumeUI();
+        } else if (e.code === 'KeyR' && document.activeElement !== document.getElementById('search-bar')) {
+            // Toggle repeat mode
+            switch (repeatMode) {
+                case 'all':
+                    repeatMode = 'one';
+                    repeat.innerHTML = '<img src="r/repeat-one.svg" alt="" srcset="">';
+                    break;
+                case 'one':
+                    repeatMode = 'none';
+                    repeat.innerHTML = '<img src="r/no-repeat.svg" alt="" srcset="">';
+                    break;
+                case 'none':
+                    repeatMode = 'all';
+                    repeat.innerHTML = '<img src="r/repeat-all.svg" alt="" srcset="">';
+                    break;
+            }
+        } else if (e.code === 'KeyQ' && document.activeElement !== document.getElementById('search-bar')) {
+            // Toggle Queue
+            toggleQueue();
         }
     });
 
@@ -235,29 +290,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Fullscreen functionality
     fullscreenButton.addEventListener('click', function() {
-        if (document.fullscreenElement) {
-            document.exitFullscreen();
-            card_0.style.left = 'calc(50% - 360px)';
-            card_1.style.left = 'calc(50% - 200px)';
-            card_3.style.left = 'calc(50% + 130px)';
-            card_4.style.left = 'calc(50% + 250px)';
-
-            card_2.style.left = '50%';
-            card_2.style.scale = '1';
-            fullscreenButton.innerHTML = '<img src="r/fullscreen.svg" alt="" srcset="">';
-        } else {
-            document.documentElement.requestFullscreen().catch(err => {
-                console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
-            });
-            card_0.style.left = '180px';
-            card_1.style.left = '190px';
-            card_3.style.left = '190px';
-            card_4.style.left = '180px';
-
-            card_2.style.left = '200px';
-            card_2.style.scale = '1.05';
-            fullscreenButton.innerHTML = '<img src="r/exit-fullscreen.svg" alt="" srcset="">';
-        }
+        toggleFullscreen();
     });
 
     // Dynamic search functionality
@@ -315,6 +348,7 @@ document.addEventListener("DOMContentLoaded", function() {
             searchListArtists.appendChild(artistListItem);
         });
     }   
+
     // Add event listeners to show searchResults
     searchInput.addEventListener('focus', function() {
         searchResults.style.display = 'block';
@@ -329,6 +363,9 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
             searchResults.style.display = 'none';
         }
+        if (statusVolume.style.visibility === 'visible') {
+            statusVolume.style.visibility = 'hidden';
+        }
     });
 
     // Add event listener to Repeat button
@@ -336,16 +373,111 @@ document.addEventListener("DOMContentLoaded", function() {
         switch (repeatMode) {
             case 'all':
                 repeatMode = 'one';
-                repeat.innerHTML = '<img src="r/repeat-one.svg" alt="" srcset="">'; // Update to your repeat-all icon path
+                repeat.innerHTML = '<img src="r/repeat-one.svg" alt="" srcset="">';
                 break;
             case 'one':
                 repeatMode = 'none';
-                repeat.innerHTML = '<img src="r/no-repeat.svg" alt="" srcset="">'; // Update to your repeat-one icon path
+                repeat.innerHTML = '<img src="r/no-repeat.svg" alt="" srcset="">';
                 break;
             case 'none':
                 repeatMode = 'all';
-                repeat.innerHTML = '<img src="r/repeat-all.svg" alt="" srcset="">'; // Update to your repeat icon path
+                repeat.innerHTML = '<img src="r/repeat-all.svg" alt="" srcset="">';
                 break;
         }
     });
+
+    // Add event listener to Like button
+    like.addEventListener('click', function() {
+        if (likedSongs.includes(currentSongIndex)) {
+            // Remove from liked songs
+            const indexToRemove = likedSongs.indexOf(currentSongIndex);
+            if (indexToRemove !== -1) {
+                likedSongs.splice(indexToRemove, 1); // Remove current song index from likedSongs array
+            }
+        } else {
+            // Add to liked songs
+            likedSongs.push(currentSongIndex); // Add current song index to likedSongs array
+        }
+        updateLikeButton(); // Update the like button UI
+        console.log(likedSongs);
+    });
+
+    // Initial update of the like button
+    updateLikeButton();
+
+    // volume controller
+    function updateVolumeUI() {
+        const volume = audioPlayer.volume;
+        volumeTail.style.width = (volume * 100) + '%'; // Adjust the width to represent the volume
+        volumeHead.style.left = `calc(${volume * 100}% - 6px)`; // Adjust the position of the volume head
+        // Update volume icon
+        if (audioPlayer.volume === 0) {
+            volumeIcon.innerHTML = '<img src="r/volume-0.svg" alt="" srcset="">';
+        } else if (audioPlayer.volume <= 0.5) {
+            volumeIcon.innerHTML = '<img src="r/volume-below-50.svg" alt="" srcset="">';
+        } else {
+            volumeIcon.innerHTML = '<img src="r/volume-above-50.svg" alt="" srcset="">';
+        };
+    };
+
+    function setVolumeFromPosition(position) {
+        const rect = volumeProgress.getBoundingClientRect();
+        const offsetX = position - rect.left;
+        const newVolume = Math.max(0, Math.min(1, offsetX / rect.width));
+        audioPlayer.volume = newVolume;
+        updateVolumeUI();
+    };
+
+    function handleVolumeDrag(e) {
+        setVolumeFromPosition(e.clientX);
+    };
+
+    // Clickable volume progress
+    volumeProgress.addEventListener('click', function(e) {
+        setVolumeFromPosition(e.clientX);
+    });
+
+    // Draggable volume control
+    volumeHead.addEventListener('mousedown', function(e) {
+        e.preventDefault(); // Prevent default behavior (text selection etc.)
+        document.addEventListener('mousemove', handleVolumeDrag);
+        document.addEventListener('mouseup', function() {
+            document.removeEventListener('mousemove', handleVolumeDrag);
+        }, { once: true });
+    });
+
+    // Initial volume UI update
+    updateVolumeUI();
+
+    volumeIcon.addEventListener('click', function() {
+        if (audioPlayer.volume === 0) {
+            audioPlayer.volume = 1;
+            updateVolumeUI();
+        } else {
+            audioPlayer.volume = 0;
+            updateVolumeUI();
+        }
+    });
+
+    volumeIcon.addEventListener('mouseover', function() {
+        statusVolume.style.visibility = 'visible';
+    });
+
+    // To hide/unhide queue
+    let queueIsOpen = false;
+    function toggleQueue() {
+        if (!queueIsOpen) {
+            queue.style.width = "320px";
+            main.style.marginLeft = "320px";
+            queueIsOpen = true;
+        } else {
+            queue.style.width = "0";
+            main.style.marginLeft = "0";
+            queueIsOpen = false;
+        }
+    }
+    queueList.addEventListener('click', function() {
+        toggleQueue();
+    });
+
 });
