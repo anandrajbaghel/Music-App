@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Montserrat;
+    -webkit-user-select: none;
+    user-select: none;
+    /* transition: all 0.3s ease; */
+    /* border: 1px dotted #fff; */
+}
+.main {
+    transition: margin-left .5s ease;
+    position: relative;
+}
+
+/* Hide scrollbar */
+.queue::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+.queue::-webkit-scrollbar-track {
+    background-color: #111;
+}
+
+.queue::-webkit-scrollbar-thumb {
+    background-color: #222;
+    border-radius: 0;
+}
+
+.queue::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+.queue {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 16px;
+}
+.queueTitle{
+    color: #fff;
+    font-size: 20px;
+    padding: 8px 16px;
+    /* border: 1px dotted #fff; */
+}
+.queueList{
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px dotted #fff; */
+}
+.queueCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    margin: 0 8px;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 8px;
+    /* border: 1px dotted #fff; */
+}
+.playingSongQueue{
+    background-color: #222;
+}
+.playingSongQueue .queueCardImage img{
+    border: 1.5px solid #fff;
+}
+.queueNumber{
+    font-size: 24px;
+    margin-right: 16px;
+    /* border: 1px dotted #fff; */
+}
+.queueCardImage img{
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+}
+.queueCardDetails{
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+    margin-left: 0;
+    width: 100%;
+    /* border: 1px dotted #fff; */
+}
+.queueCardName{
+    font-size: 16px;
+    margin-top: -10px;
+    /* border: 1px dotted #fff; */
+}
+.queueCardArtist{
+    font-size: 12px;
+    font-weight: 300;
+    /* border: 1px dotted #fff; */
+}
+.favStatus img{
+    width: 24px;
+    height: 24px;
+}
+
+/* Lyrics */
+.lyrics::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+.lyrics::-webkit-scrollbar-track {
+    background-color: #111;
+}
+
+.lyrics::-webkit-scrollbar-thumb {
+    background-color: #222;
+    border-radius: 0;
+}
+
+.lyrics::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+.lyrics{
+    display: flex;
+    width: 700px;
+    height: 350px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-20%, -40%);
+    z-index: -10;
+    background-color: transparent;
+    overflow: hidden;
+    text-align: center;
+    font-size: 40px;
+    color: #fff;
+    transition: all 0.3s ease;
+    visibility: hidden;
+    /* font-family: Arial, sans-serif; */
+    /* border: 1px dotted #fff; */
+}
+.lyricsText{
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    /* border: 1px dotted #fff; */
+}
+
+
+.lyric {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    transition: opacity 0.5s ease-in-out, top 0.5s ease-in-out; /* Smooth transition */
+    white-space: nowrap; /* Prevent line breaks */
+}
+
+.lyric.current {
+    top: 50%; /* Center vertically within the container */
+    transform: translateY(-50%); /* Center vertically using transform */
+    opacity: 1;
+}
+
+.lyric.previous {
+    top: calc(50% - 50px); /* Adjust based on line height */
+    opacity: 0.5;
+}
+
+.lyric.next {
+    top: calc(50% + 50px); /* Adjust based on line height */
+    opacity: 0.5;
+}
