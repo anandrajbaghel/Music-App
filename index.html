@@ -6,11 +6,12 @@
     <title>Music Player</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style2.css">
-    <link rel="icon" href="r/spreadMusic.svg" type="image/svg+xml">
+    <!-- <link rel="icon" href="r/spreadMusic-dark.svg" type="image/svg+xml"> -->
+    <link id="favicon" rel="icon" href="r/spreadMusic.svg" type="image/svg+xml">
+    
 </head>
 <body>
         <div class="circle"></div>
-
         <!-- Queue -->
         <div class="queue" id="left-side-queue">
             <div class="queueElements element1">
@@ -28,33 +29,6 @@
                     <div class="queueCard">
                         <div class="queueCardImage">
                             <img src="r/image2.jpg" alt="" srcset="">
-                        </div>
-                        <div class="queueCardDetails">
-                            <span class="queueCardName">name</span>
-                            <span class="queueCardArtist">artist</span>
-                        </div>
-                    </div>
-                    <div class="queueCard">
-                        <div class="queueCardImage">
-                            <img src="r/image3.jpg" alt="" srcset="">
-                        </div>
-                        <div class="queueCardDetails">
-                            <span class="queueCardName">name</span>
-                            <span class="queueCardArtist">artist</span>
-                        </div>
-                    </div>
-                    <div class="queueCard">
-                        <div class="queueCardImage">
-                            <img src="r/image4.jpg" alt="" srcset="">
-                        </div>
-                        <div class="queueCardDetails">
-                            <span class="queueCardName">name</span>
-                            <span class="queueCardArtist">artist</span>
-                        </div>
-                    </div>
-                    <div class="queueCard">
-                        <div class="queueCardImage">
-                            <img src="r/image5.jpg" alt="" srcset="">
                         </div>
                         <div class="queueCardDetails">
                             <span class="queueCardName">name</span>
@@ -153,13 +127,14 @@
                                 <li>Right Arrow - 10s Forward</li>
                                 <li>Up Arrow - Volume Up</li>
                                 <li>Down Arrow - Volume Down</li>
-                                <li>F - Find</li>
+                                <li>F - Fullscreen</li>
+                                <li>L - Like/Unlike</li>
                                 <li>M - Mute/Unmute</li>
                                 <li>N - Next Track</li>
                                 <li>P - Previous Track</li>
-                                <li>Q - Queue</li>
-                                <li>R - Repeat</li>
-                                <li>S - Fullscreen</li>
+                                <li>Q - Queue Toggle</li>
+                                <li>R - Repeat Mode</li>
+                                <li>S - Search</li>
                                 <li>X - Shuffle</li>
                                 
                             </ul>
@@ -170,10 +145,10 @@
 
             <!-- Profile : visibility set to hidden -->
             <div class="profileMsg">
-                <span class="welcomeMsg">Good Morning</span>
+                <span class="welcomeMsg">Welcome!</span>
                 <span class="creditsMsg">Hi! I am <span class="creditName">Anand</span>!</span>
                 <span class="profileGithub">Visit my
-                    <a href="https://github.com/anandrajbaghel" target="_blank">Github Profile</a>.
+                    <a href="https://github.com/anandrajbaghel" target="_blank" rel="noopener">Github Profile</a>.
                 </span>
             </div>
 
@@ -189,7 +164,7 @@
                         </span>
                         <span class="line"></span>
                         <span class="grad"></span>
-                        <img src="r/image3.jpg" alt="" class="cardImage"/>
+                        <img src="r/spreadMusic.svg" alt="" class="cardImage"/>
                     </div>
                 </div>
                 <div class="card card-1">
@@ -202,7 +177,7 @@
                         </span>
                         <span class="line"></span>
                         <span class="grad"></span>
-                        <img src="r/image2.jpg" alt="" class="cardImage"/>
+                        <img src="r/spreadMusic.svg" alt="" class="cardImage"/>
                     </div>
                 </div>
                 <div class="card card-2 Playing ">
@@ -215,7 +190,7 @@
                         </span>
                         <span class="line"></span>
                         <span class="grad"></span>
-                        <img src="r/image1.jpg" alt="" class="cardImage"/>
+                        <img src="r/spreadMusic.svg" alt="" class="cardImage"/>
                     </div>
                 </div>
                 <div class="card card-3">
@@ -228,7 +203,7 @@
                         </span>
                         <span class="line"></span>
                         <span class="grad"></span>
-                        <img src="r/image5.jpg" alt="" class="cardImage"/>
+                        <img src="r/spreadMusic.svg" alt="" class="cardImage"/>
                     </div>
                 </div>
                 <div class="card card-4">
@@ -241,7 +216,7 @@
                         </span>
                         <span class="line"></span>
                         <span class="grad"></span>
-                        <img src="r/image4.jpg" alt="" class="cardImage"/>
+                        <img src="r/spreadMusic.svg" alt="" class="cardImage"/>
                     </div>
                 </div>
             </div>
@@ -259,10 +234,20 @@
                 </div>
             </div>
 
+            <!-- <div class="lyrics">
+                <div class="lyricsText" id="lyrics-display">Lyrics...</div>
+            </div> -->
+
+            <div class="lyrics" id="lyrics-display">
+                <!-- <p class="lyric previous">Previous line of lyrics</p>
+                <p class="lyric current">Current line of lyrics</p>
+                <p class="lyric next">Next line of lyrics</p> -->
+            </div>
+            
+
             <div class="audioPlayer">
                 <audio id="audio-player" src=""></audio>
                 <div class="audioLeftController">
-                    <!-- onclick="openNav()" -->
                     <div class="audioQueue" id="queue-list">
                         <img src="r/queue.svg" alt="" srcset="">
                     </div>
@@ -325,6 +310,7 @@
 
 
 
+
         <!-- lottie animation -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
         <script>
@@ -334,9 +320,13 @@
                 renderer: 'svg',
                 loop: true,
                 autoplay: true,
-                path: 'r/loader.json'
+                path: 'r/loader.json' // Replace with the correct path to your animation JSON file
             });
         </script>
-        <script src="script.js"></script>
+        <!-- <script src="songsClassified.js"></script> -->
+        <!-- Scripts -->
+        <script type="module" src="song.js"></script>
+        <script type="module" src="app.js"></script>
+
 </body>
 </html>
