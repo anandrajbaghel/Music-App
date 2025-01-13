@@ -1,0 +1,123 @@
+[
+    {
+        "songName": "No Sleep",
+        "artist": "Martin Garrix",
+        "album": "Single",
+        "albumImage": "r/album/image3.jpg",
+        "liked": false,
+        "playCount": 4,
+        "location": "music/No Sleep.mp3",
+        "lyrics" : "music/lyrics/No Sleep.lrc"
+    },
+    {
+        "songName": "Ilahi",
+        "artist": "Arijit Singh",
+        "album": "Yeh Jawaani Hai Deewani",
+        "albumImage": "r/album/image2.jpg",
+        "liked": true,
+        "playCount": 5,
+        "location": "music/Ilahi.mp3",
+        "lyrics" : "music/lyrics/Ilahi.lrc"
+    },
+    {
+        "songName": "High On Life",
+        "artist": "Martin Garrix",
+        "album": "Single",
+        "albumImage": "r/album/image1.jpg",
+        "liked": true,
+        "playCount": 10,
+        "location": "music/High On Life.mp3",
+        "lyrics" : "music/lyrics/High On Life.lrc"
+    },
+    {
+        "songName": "Shanivaar Raati",
+        "artist": "Arijit Singh",
+        "album": "Main Tera Hero",
+        "albumImage": "r/album/image5.jpg",
+        "liked": false,
+        "playCount": 2,
+        "location": "music/Shanivaar Raati.mp3",
+        "lyrics" : "music/lyrics/Shanivaar Raati.lrc"
+    },
+    {
+        "songName": "On & On",
+        "artist": "Cartoon",
+        "album": "Single",
+        "albumImage": "r/album/image4.jpg",
+        "liked": false,
+        "playCount": 0,
+        "location": "music/On & On.mp3",
+        "lyrics" : "music/lyrics/On & On.lrc"
+    },
+    {
+        "songName": "Samjhawan",
+        "artist": "Arijit Singh",
+        "album": "Badri Ki Dulhaniya",
+        "albumImage": "r/album/image7.jpg",
+        "liked": true,
+        "playCount": 8,
+        "location": "music/Samjhawan.mp3",
+        "lyrics" : "music/lyrics/Samjhawan.lrc"
+    },
+    {
+        "songName": "Aabaad Barbaad",
+        "artist": "Arijit Singh",
+        "album": "Ludo",
+        "albumImage": "r/album/image6.jpg",
+        "liked": false,
+        "playCount": 0,
+        "location": "music/Aabaad Barbaad.mp3",
+        "lyrics" : "music/lyrics/Aabaad Barbaad.lrc"
+    },
+    {
+        "songName": "Maskhari",
+        "artist": "Arijit Singh",
+        "album": "Dil Bechara",
+        "albumImage": "r/album/image8.jpg",
+        "liked": false,
+        "playCount": 0,
+        "location": "music/Maskhari.mp3",
+        "lyrics" : "music/lyrics/Maskhari.lrc"
+    },
+    {
+        "songName": "Phir Se Ud Chala",
+        "artist": "Mohit Chauhan",
+        "album": "Rockstar",
+        "albumImage": "r/album/image9.jpg",
+        "liked": false,
+        "playCount": 0,
+        "location": "music/Phir Se Ud Chala.mp3",
+        "lyrics" : "music/lyrics/Phir Se Ud Chala.lrc"
+    },
+    {
+        "songName": "Tera Fitoor",
+        "artist": "Arijit Singh",
+        "album": "Rockstar",
+        "albumImage": "r/album/image10.jpg",
+        "liked": false,
+        "playCount": 0,
+        "location": "music/Tera Fitoor.mp3",
+        "lyrics" : "music/lyrics/Tera Fitoor.lrc"
+    },
+    {
+        "songName": "Tum Se Hi",
+        "artist": "Mohit Chauhan",
+        "album": "Rockstar",
+        "albumImage": "r/album/image11.jpg",
+        "liked": false,
+        "playCount": 0,
+        "location": "music/Tum Se Hi.mp3",
+        "lyrics" : "music/lyrics/Tum Se Hi.lrc"
+    },
+    {
+        "songName": "Ve Maahi",
+        "artist": "Arijit Singh",
+        "album": "Kesari",
+        "albumImage": "r/album/image12.jpg",
+        "liked": false,
+        "playCount": 0,
+        "location": "music/Ve Maahi.mp3",
+        "lyrics" : "music/lyrics/Ve Maahi.lrc"
+    }
+    
+]
